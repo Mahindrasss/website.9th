@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boss Maths Classes | NCERT CBSE Maths Tuition</title>
+  <!-- Google Font for modern, clean look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --primary-dark: #0b3a63;
+      --accent: #1a73e8;
+      --bg: #f5f9ff;
+      --white: #ffffff;
+      --text: #1f2d3d;
+      --muted: #6c7a89;
+      --shadow: 0 10px 30px rgba(15, 76, 129, 0.15);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1200px, 90%);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 20px rgba(15, 76, 129, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-btn span {
+      width: 26px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 10px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(120deg, rgba(15, 76, 129, 0.1), rgba(26, 115, 232, 0.08));
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 12px 26px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(15, 76, 129, 0.25);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(15, 76, 129, 0.15);
+    }
+
+    .hero-card {
+      background: var(--white);
+      padding: 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    /* Section styles */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+
+    .card {
+      background: var(--white);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(15, 76, 129, 0.2);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .highlight {
+      background: var(--primary);
+      color: var(--white);
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 18px;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .highlight h3 {
+      font-size: 1.4rem;
+    }
+
+    .highlight p {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Contact */
+    .contact-card {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-item h4 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .contact-item p {
+      color: var(--muted);
+    }
+
+    footer {
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background: var(--white);
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .highlight {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">Boss Maths Classes</div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#why">Why Me</a>
+        <a href="#details">Class Details</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="menu-btn" id="menuBtn" aria-label="Toggle menu" role="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-text reveal">
+        <h1>NCERT CBSE Maths (Class 6–9)</h1>
+        <p>Easy Maths in Hindi + English (Hinglish). Concepts clear, confidence full, result solid.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#contact">Book Free Demo Class</a>
+          <a
+            class="btn btn-outline"
+            href="https://wa.me/911234567890"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp Now
+          </a>
+        </div>
+      </div>
+      <div class="hero-card reveal">
+        <h3>Personal Attention + Smart Practice</h3>
+        <p>
+          Weekly tests, doubt solving, and easy notes. Har concept step-by-step samajh aayega.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Teacher -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>About the Teacher</h2>
+        <p>Friendly Maths teacher with focus on concept clarity and exam confidence.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Concept Clear, Result Strong</h3>
+        <p>
+          Main focus basics strong karna hai. Easy examples, daily practice tips, and
+          doubt-friendly class. Bachche khud bolenge: "Maths easy hai!"
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Courses Offered</h2>
+        <p>NCERT aligned classes with regular practice for every class level.</p>
+      </div>
+      <div class="grid">
+        <div class="card reveal">
+          <h3>Class 6 Maths</h3>
+          <p>Strong base, clean concepts, and fun practice for easy marks.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Class 7 Maths</h3>
+          <p>Step-by-step learning with short notes and regular tests.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Class 8 Maths</h3>
+          <p>Focused revision, daily questions, and doubt solving sessions.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Class 9 Maths</h3>
+          <p>Concept depth, board pattern practice, and weekly mock tests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Me -->
+  <section id="why">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Why Choose Me</h2>
+        <p>Simple teaching, clear goals, and real progress in every class.</p>
+      </div>
+      <div class="grid">
+        <div class="card reveal">
+          <h3>NCERT Focused</h3>
+          <p>Textbook based teaching so exam questions easy lagte hain.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Concept Based Teaching</h3>
+          <p>Formula yaad nahi, concept samajho. Marks automatic aayenge.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Weekly Tests</h3>
+          <p>Small tests se revision hota hai, progress clear dikhta hai.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Small Batches</h3>
+          <p>Personal attention milta hai, doubts quickly solve hote hain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Class Details -->
+  <section id="details">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Class Details</h2>
+        <p>Flexible schedule with online and offline options for convenience.</p>
+      </div>
+      <div class="highlight reveal">
+        <div>
+          <h3>Online & Offline</h3>
+          <p>Choose your comfort mode. Both options available.</p>
+        </div>
+        <div>
+          <h3>60–75 Minutes</h3>
+          <p>Perfect time for concept + practice without overload.</p>
+        </div>
+        <div>
+          <h3>Regular Doubt Clearing</h3>
+          <p>Class ke baad bhi support, so learning continues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Contact Now</h2>
+        <p>Free demo class book karo. Aaj hi start karo!</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="contact-item">
+          <h4>Phone</h4>
+          <p>+91-XXXXXXXXXX</p>
+        </div>
+        <div class="contact-item">
+          <h4>WhatsApp</h4>
+          <a class="btn btn-primary" href="https://wa.me/911234567890" target="_blank" rel="noopener">
+            WhatsApp Chat
+          </a>
+        </div>
+        <div class="contact-item">
+          <h4>Location</h4>
+          <p>Your City, Your Area</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Boss Maths Classes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Close menu on link click (mobile UX)
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    // Reveal animations on scroll
+    const revealItems = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
